@@ -20,5 +20,7 @@ public class Main {
 
         v.visit(tree);
 
+        System.out.println(v.FinalMessage);
+
     }
 }
