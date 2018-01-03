@@ -4,8 +4,10 @@ class test{
     }
 }
 
+
+
 class A {
-    public int foo () {
+    public int foo (int n) {
         return 1;
     }
 }
@@ -16,12 +18,14 @@ class Fac {
         int num_aux ;
         int a;
         A app;
+        app = new A();
         if (num < 1)
             num_aux = 1 ;
         else
             num_aux = num * (this.ComputeFac(num-1)) ;
         a = app.ComputeFac();
-        a = app.Blabla();
+        a = app.foo();
+        a = app.noExist();
         return num_aux ;
     }
 

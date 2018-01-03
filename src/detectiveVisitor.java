@@ -15,7 +15,7 @@ public class detectiveVisitor extends MiniJavaBaseVisitor<Integer> {
     /** Goal */
     public Integer visitGoal(MiniJavaParser.GoalContext ctx) {
         VisitCount += 1;
-        System.out.println("This is the "+this.VisitCount+" visit to the AST.");
+//        System.out.println("This is the "+this.VisitCount+" visit to the AST.");
         return visitChildren(ctx);
     }
 
@@ -74,7 +74,7 @@ public class detectiveVisitor extends MiniJavaBaseVisitor<Integer> {
                         FinalMessage += "The method corresponds to this type: " + DesignatedClass+"\n";
                     }
                 } else {
-                    FinalMessage += "\nError: There's no such method @ "+ctx.getText()+"\n"+"Method:\t"+CheckMethod+"\nVar:\t"+CheckVar+"\n";
+                    FinalMessage += "\nError: No method @ "+ctx.getText()+" Exists\n"+"Method:\t"+CheckMethod+"\nVar:\t"+CheckVar+"\n";
                 }
             }
         }
