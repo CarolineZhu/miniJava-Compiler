@@ -15,7 +15,6 @@ public class detectiveVisitor extends MiniJavaBaseVisitor<Integer> {
     /** Goal */
     public Integer visitGoal(MiniJavaParser.GoalContext ctx) {
         VisitCount += 1;
-//        System.out.println("This is the "+this.VisitCount+" visit to the AST.");
         return visitChildren(ctx);
     }
 
@@ -29,7 +28,6 @@ public class detectiveVisitor extends MiniJavaBaseVisitor<Integer> {
     /** ClassDeclaration */
     @Override
     public Integer visitClassDeclaration(MiniJavaParser.ClassDeclarationContext ctx) {
-//        System.out.println(ctx.getChild(1));
         this.CurrentClass = ctx.getChild(1).getText();
         if (ctx.getChild(2).equals("extends"))
             Inheritance.put(this.CurrentClass, ctx.getChild(3).getText());
@@ -90,21 +88,17 @@ public class detectiveVisitor extends MiniJavaBaseVisitor<Integer> {
     /** VarDeclaration */
     @Override
     public Integer visitVarDeclaration(MiniJavaParser.VarDeclarationContext ctx) {
-        if (VisitCount == 1) {
-            Declaration.put(ctx.getChild(1).getText(), ctx.getChild(0).getText());
-        }
+        Declaration.put(ctx.getChild(1).getText(), ctx.getChild(0).getText());
         return visitChildren(ctx);
     }
 
     /** ParameterList */
     @Override
     public Integer visitParameterList(MiniJavaParser.ParameterListContext ctx) {
-        if (VisitCount == 1) {
-            Integer temp = 0;
-            for (int i = 0; i < ctx.getChildCount(); i+= 2) {
-                Parameters.put(CurrentClass + "-" + CurrentMethod + "-" + temp, ctx.getChild(i).getChild(0).getText());
-                temp += 1;
-            }
+        Integer temp = 0;
+        for (int i = 0; i < ctx.getChildCount(); i+= 2) {
+            Parameters.put(CurrentClass + "-" + CurrentMethod + "-" + temp, ctx.getChild(i).getChild(0).getText());
+            temp += 1;
         }
         return visitChildren(ctx);
     }
